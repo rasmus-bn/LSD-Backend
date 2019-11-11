@@ -37,5 +37,5 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # run tests!
-      - run: cp /settings.xml ~/.m2/settings.xml
+      - run: cp ./settings.xml ~/.m2/settings.xml
       - run: cd ./backend && mvn integration-test
