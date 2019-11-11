@@ -24,17 +24,17 @@ jobs:
       - checkout
       # Download and cache dependencies
       - restore_cache:
-          path: ~/LSD-Backend/my-app
+          path: ~/LSD-Backend/backend
           keys:
             - v1-dependencies-{{ checksum "pom.xml" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: cd ./my-app && mvn dependency:go-offline
+      - run: cd ./backend && mvn dependency:go-offline
       - save_cache:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # run tests!
-      - run: cd ./my-app && mvn integration-test
+      - run: cd ./backend && mvn integration-test
