@@ -19,9 +19,22 @@
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
 
+  <repositories>
+    <repository>
+      <id>snapshots</id>
+      <name>333bdd21ebb9-snapshots</name>
+      <url>http://dcarl.me:8081/artifactory/libs-snapshot</url>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
+      <groupId>LargeSystemDevelopment</groupId>
+      <artifactId>LargeSystemDevelopment</artifactId>
+      <version>1.0-20191111.111103-1</version>
+    </dependency>
+    <dependency>
+    <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
