@@ -9,7 +9,7 @@ import javax.ejb.Stateless;
 import java.util.Collection;
 import java.util.Date;
 
-@Stateless(name = "Backend")
+@Stateless
 public class ContractBean implements BeanInterface {
 
     @Resource
