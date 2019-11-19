@@ -16,22 +16,27 @@ public class ContractBean implements BeanInterface {
     private SessionContext context;
 
     @Override
-    public Collection<FlightRoute> getFlightRoutes(Date date, Date date1, String s, String s1, boolean b) {
+    public User user(User user) {
         return null;
     }
 
     @Override
-    public Booking makeBooking(Collection<Long> collection, FFNCCIdenitfier ffnccIdenitfier, Collection<Passenger> collection1) {
+    public Collection<FlightOffer> getFlightOffers(User user, Date date, Date date1, String s, String s1, boolean b) {
         return null;
     }
 
     @Override
-    public Booking getBooking(PNRIdentifier pnrIdentifier) {
+    public Booking makeBooking(User user, FlightOffer flightOffer, FFNCCIdenitfier ffnccIdenitfier, Collection<Passenger> collection) {
         return null;
     }
 
     @Override
-    public boolean cancelBooking(PNRIdentifier pnrIdentifier) {
+    public Booking getBooking(User user, PNRIdentifier pnrIdentifier) {
+        return null;
+    }
+
+    @Override
+    public boolean cancelBooking(User user, PNRIdentifier pnrIdentifier) {
         return false;
     }
 

@@ -5,7 +5,7 @@ COPY settings.xml /root/.m2/settings.xml
 WORKDIR /app
 RUN mvn clean package
 
-FROM tomcat:9.0.1-alpine
+FROM jboss/wildfly
 
-COPY --from=build-env /app/target/4.war /usr/local/tomcat/webapps/4.war
+COPY --from=build-env /app/target/4.war /opt/jboss/wildfly/standalone/deployments/4.war
 EXPOSE 8080
