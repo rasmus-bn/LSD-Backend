@@ -1,3 +1,14 @@
-bean/Tester.class
-bean/ITester.class
-bean/ContractBean.class
+bean\ContractBean.class
+entities\Airline.class
+entities\Day$Days.class
+entities\Booking.class
+entities\Day.class
+bean\ITester.class
+entities\SchemaGenerator.class
+entities\FlightInstance.class
+bean\Tester.class
+entities\Airport.class
+entities\Country.class
+entities\Ticket.class
+entities\User.class
+entities\Flight.class
