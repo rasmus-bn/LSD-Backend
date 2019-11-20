@@ -7,32 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a95cb4e-3267-468b-823d-5b9f1bd82b79" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/4.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Airline.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Airport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Booking.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Country.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Flight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/FlightInstance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/SchemaGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Ticket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/4.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/4.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/4/WEB-INF/classes/bean/ContractBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/4/WEB-INF/classes/bean/ContractBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/4/WEB-INF/classes/bean/ITester.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/4/WEB-INF/classes/bean/ITester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/4/WEB-INF/classes/bean/Tester.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/4/WEB-INF/classes/bean/Tester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/4/WEB-INF/lib/LargeSystemDevelopment-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/4/WEB-INF/lib/LargeSystemDevelopment-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/ContractBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/ContractBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/ITester.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/ITester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/Tester.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Tester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/entities/Ticket_.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/entities/Ticket_.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -280,6 +257,7 @@
       <workItem from="1574197979817" duration="418000" />
       <workItem from="1574198981855" duration="5768000" />
       <workItem from="1574267269715" duration="13610000" />
+      <workItem from="1574290749678" duration="1684000" />
     </task>
     <servers />
   </component>

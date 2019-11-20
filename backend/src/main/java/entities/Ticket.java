@@ -10,11 +10,11 @@ public class Ticket implements Serializable {
     public Ticket() {
     }
 
-    public Ticket(@NotNull String firstname, @NotNull String lastName, @NotNull FlightInstance flightInstance, @NotNull Booking bookingId) {
+    public Ticket(@NotNull String firstname, @NotNull String lastName, @NotNull FlightInstance flightInstance, @NotNull Booking booking) {
         this.firstname = firstname;
         this.lastName = lastName;
         this.flightInstance = flightInstance;
-        this.bookingId = bookingId;
+        this.booking = booking;
     }
 
     @Id
@@ -36,7 +36,7 @@ public class Ticket implements Serializable {
 
     @ManyToOne
     @NotNull
-    private Booking bookingId;
+    private Booking booking;
 
 
     public int getId() {
@@ -71,11 +71,11 @@ public class Ticket implements Serializable {
         this.flightInstance = flightInstance;
     }
 
-    public Booking getBookingId() {
-        return bookingId;
+    public Booking getBooking() {
+        return booking;
     }
 
-    public void setBookingId(Booking bookingId) {
-        this.bookingId = bookingId;
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 }
