@@ -7,11 +7,11 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-11-20T21:23:39")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-11-21T00:54:16")
 @StaticMetamodel(FlightInstance.class)
 public class FlightInstance_ { 
 
-    public static volatile SingularAttribute<FlightInstance, Airport> origginAirport;
+    public static volatile SingularAttribute<FlightInstance, Airport> originAirport;
     public static volatile SingularAttribute<FlightInstance, Double> price;
     public static volatile SingularAttribute<FlightInstance, Timestamp> depTime;
     public static volatile SingularAttribute<FlightInstance, Flight> flightId;

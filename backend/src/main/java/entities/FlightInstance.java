@@ -12,14 +12,14 @@ public class FlightInstance implements Serializable {
     public FlightInstance() {
     }
 
-    public FlightInstance(@NotNull @Size(min = 1, max = 290) int seats, @NotNull @Size(min = 0, max = 200000) double price, @NotNull String day, @NotNull Timestamp depTime, @NotNull Timestamp arrTime, @NotNull Airport destAirport, @NotNull Airport origginAirport, @NotNull Flight flightId) {
+    public FlightInstance(@NotNull @Size(min = 1, max = 290) int seats, @NotNull @Size(min = 0, max = 200000) double price, @NotNull String day, @NotNull Timestamp depTime, @NotNull Timestamp arrTime, @NotNull Airport destAirport, @NotNull Airport originAirport, @NotNull Flight flightId) {
         this.seats = seats;
         this.price = price;
         this.day = day;
         this.depTime = depTime;
         this.arrTime = arrTime;
         this.destAirport = destAirport;
-        this.origginAirport = origginAirport;
+        this.originAirport = originAirport;
         this.flightId = flightId;
     }
 
@@ -62,7 +62,7 @@ public class FlightInstance implements Serializable {
 
     @ManyToOne
     @NotNull
-    private Airport origginAirport;
+    private Airport originAirport;
 
     @ManyToOne
     @NotNull
@@ -125,12 +125,12 @@ public class FlightInstance implements Serializable {
         this.destAirport = destAirport;
     }
 
-    public Airport getOrigginAirport() {
-        return origginAirport;
+    public Airport getOriginAirport() {
+        return originAirport;
     }
 
-    public void setOrigginAirport(Airport origginAirport) {
-        this.origginAirport = origginAirport;
+    public void setOriginAirport(Airport origginAirport) {
+        this.originAirport = origginAirport;
     }
 
     public Flight getFlightId() {
