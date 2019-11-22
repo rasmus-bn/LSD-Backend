@@ -3,17 +3,16 @@ package entities;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.TimeZone;
 
 public class SchemaGenerator {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("sebastian");
         EntityManager em = emf.createEntityManager();
-        basicSetup(em);
+//        basicSetup(em);
+        query(em);
         System.out.println(em.getReference(FlightInstance.class, 1));
         System.out.println(em.getReference(FlightInstance.class, 2));
     }
@@ -41,6 +40,25 @@ public class SchemaGenerator {
         em.persist(fi2);
         em.persist(airline);
         em.getTransaction().commit();
+
+
+
+    }
+
+    public static void query(EntityManager em){
+        List<FlightInstance> t = test(em, "Monday");
+        for (FlightInstance f: t) {
+            System.out.println("hello");
+            System.out.println(f.getFlightId());
+            System.out.println(f.getSeats());
+            System.out.println(f.getOriginAirport());
+        }
+    }
+
+    public static List test(EntityManager em, String day) {
+        return em.createQuery("SELECT FI FROM FlightInstance FI WHERE FI.day = :day", FlightInstance.class)
+                .setParameter("day", day)
+                .getResultList();
     }
 }
 
