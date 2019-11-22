@@ -13,7 +13,7 @@ public class Booking implements Serializable {
     public Booking() {
     }
 
-    public Booking(@NotNull @Size(min = 0) double price, @NotNull String fnncc, @NotNull String pnr, Ticket ticket) {
+    public Booking(@NotNull @Size(min = 0) double price, @NotNull String fnncc, @NotNull long pnr, Ticket ticket) {
         this.price = price;
         this.fnncc = fnncc;
         this.pnr = pnr;
@@ -39,7 +39,7 @@ public class Booking implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "PNR")
-    private String pnr;
+    private long pnr;
 
     @ManyToOne
     private Ticket ticket;
@@ -68,11 +68,11 @@ public class Booking implements Serializable {
         this.fnncc = fnncc;
     }
 
-    public String getPnr() {
+    public long getPnr() {
         return pnr;
     }
 
-    public void setPnr(String pnr) {
+    public void setPnr(long pnr) {
         this.pnr = pnr;
     }
 

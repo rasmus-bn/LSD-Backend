@@ -9,5 +9,6 @@ public class SchemaGenerator {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("sebastian");
         EntityManager em = emf.createEntityManager();
 
+
     }
 }
