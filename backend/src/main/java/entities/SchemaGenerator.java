@@ -11,6 +11,7 @@ public class SchemaGenerator {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("sebastian");
         EntityManager em = emf.createEntityManager();
+        basicSetup(em);
         System.out.println(em.getReference(FlightInstance.class, 7));
     }
 
