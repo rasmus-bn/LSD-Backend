@@ -1,5 +1,7 @@
 package entities;
 
+import entities.factory.FlightInstanceFactory;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -13,8 +15,8 @@ public class SchemaGenerator {
         EntityManager em = emf.createEntityManager();
 //        basicSetup(em);
         query(em);
-        System.out.println(em.getReference(FlightInstance.class, 1));
-        System.out.println(em.getReference(FlightInstance.class, 2));
+//        System.out.println(em.getReference(FlightInstance.class, 1));
+//        System.out.println(em.getReference(FlightInstance.class, 2));
     }
 
     public static void basicSetup(EntityManager em){
@@ -40,25 +42,15 @@ public class SchemaGenerator {
         em.persist(fi2);
         em.persist(airline);
         em.getTransaction().commit();
-
-
-
     }
 
     public static void query(EntityManager em){
-        List<FlightInstance> t = test(em, "Monday");
+        List<FlightInstance> t = FlightInstanceFactory.getByDateAndAirport(em,new Date(70, 0, 1), "Stockholm", "Copenhagen");
         for (FlightInstance f: t) {
-            System.out.println("hello");
-            System.out.println(f.getFlightId());
+            System.out.println(f.getId());
             System.out.println(f.getSeats());
-            System.out.println(f.getOriginAirport());
+            System.out.println(f.getOriginAirport().getName());
         }
-    }
-
-    public static List test(EntityManager em, String day) {
-        return em.createQuery("SELECT FI FROM FlightInstance FI WHERE FI.day = :day", FlightInstance.class)
-                .setParameter("day", day)
-                .getResultList();
     }
 }
 
