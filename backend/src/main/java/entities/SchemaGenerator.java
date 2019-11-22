@@ -24,8 +24,8 @@ public class SchemaGenerator {
         entities.Airline airline = new entities.Airline("SAS", "AS", new ArrayList<>());
         airline.getFlightId().add(flight1);
         airline.getFlightId().add(flight2);
-        entities.FlightInstance fi = new FlightInstance(flight1.getCapacity(), 200.0, "Monday", new Timestamp(10000l), new Timestamp(100000l), airport1, airport2, flight1);
-
+        entities.FlightInstance fi1 = new FlightInstance(flight1.getCapacity(), 200.0, "Monday", new Timestamp(10000l), new Timestamp(100000l), airport1, airport2, flight1);
+        entities.FlightInstance fi2 = new FlightInstance(flight1.getCapacity(), 200.0, "tuesdag", new Timestamp(100000000l), new Timestamp(100000000000l), airport2, airport1, flight1);
         em.getTransaction().begin();
         em.persist(flight1);
         em.persist(flight2);
@@ -33,7 +33,8 @@ public class SchemaGenerator {
         em.persist(country2);
         em.persist(airport1);
         em.persist(airport2);
-        em.persist(fi);
+        em.persist(fi1);
+        em.persist(fi2);
         em.persist(airline);
         em.getTransaction().commit();
     }
