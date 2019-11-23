@@ -44,8 +44,4 @@ public class SchemaGenerator {
     }
 }
 
-//    public static void createCountry(EntityManager em, Collection<Country> countries){
-//       Country country = em.getReference(Country.class, 201);
-//        System.out.println(country.getTimeZone().getID());
-
 
