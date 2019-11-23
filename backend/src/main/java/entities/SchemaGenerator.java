@@ -5,6 +5,11 @@ import entities.factory.FlightInstanceFactory;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -14,9 +19,40 @@ public class SchemaGenerator {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("sebastian");
         EntityManager em = emf.createEntityManager();
 //        basicSetup(em);
-        query(em);
+//        query(em);
+        inertData(em);
 //        System.out.println(em.getReference(FlightInstance.class, 1));
 //        System.out.println(em.getReference(FlightInstance.class, 2));
+    }
+
+    public static void inertData(EntityManager em){
+        Random  r = new Random();
+
+        // Generate airlines and flights
+        ArrayList<entities.Airline> airlines = new ArrayList();
+
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        InputStream is = classloader.getResourceAsStream("airlines");
+        InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
+        BufferedReader reader = new BufferedReader(streamReader);
+        try {
+            em.getTransaction().begin();
+            for (String line; (line = reader.readLine()) != null;) {
+                String[] content = line.split("\t");
+                entities.Airline airline = new entities.Airline(content[1], content[0], new ArrayList<>());
+                int amount = r.nextInt(10)+1;
+                for(int i = 0; i < amount; i++){
+                    entities.Flight flight = new entities.Flight(200, r.nextInt(1000));
+                    airline.getFlightId().add(flight);
+                    em.persist(flight);
+                }
+                em.persist(airline);
+                em.getTransaction().commit();
+                airlines.add(airline);
+            }
+        } catch (IOException e){
+
+        }
     }
 
     public static void basicSetup(EntityManager em){
