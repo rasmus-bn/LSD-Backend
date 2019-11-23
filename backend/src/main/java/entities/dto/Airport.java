@@ -9,6 +9,18 @@ import java.util.TimeZone;
 @Table(name = "AIRPORT")
 public class Airport extends contract.dto.Airport {
 
+
+    public Airport(@NotNull @Size(min = 1, max = 2000) TimeZone timeZone, @NotNull @Size(max = 3) String iata, @NotNull @Size(min = 1, max = 2000) String name) {
+        super(timeZone, iata, name);
+        this.timeZone = timeZone;
+        this.iata = iata;
+        this.name = name;
+    }
+
+    public Airport() {
+        super();
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")

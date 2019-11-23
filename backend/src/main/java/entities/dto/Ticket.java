@@ -5,6 +5,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "TICKET")
 public class Ticket extends contract.dto.Ticket {
+    public Ticket(contract.dto.Passenger passenger, contract.dto.Flight flight) {
+        super(passenger, flight);
+    }
+
+    public Ticket() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

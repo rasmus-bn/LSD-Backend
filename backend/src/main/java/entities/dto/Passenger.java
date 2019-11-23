@@ -8,6 +8,12 @@ import java.util.Date;
 @Entity
 @Table(name = "PASSENGER")
 public class Passenger extends contract.dto.Passenger {
+    public Passenger(String firstName, String lastName, Date dob) {
+        super(firstName, lastName, dob);
+    }
+
+    public Passenger() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -9,6 +9,13 @@ import java.util.Collection;
 @Table(name = "BOOKING")
 public class Booking extends contract.dto.Booking {
 
+    public Booking(contract.dto.PNRIdentifier pnr, double price, contract.dto.FFNCCIdenitfier ffncc, Collection<contract.dto.Ticket> tickets, contract.dto.FlightRoute flightRoute, contract.dto.FlightRoute returnRoute) {
+        super(pnr, price, ffncc, tickets, flightRoute, returnRoute);
+    }
+
+    public Booking() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
