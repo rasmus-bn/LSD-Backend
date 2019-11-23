@@ -1,8 +1,5 @@
 package entities.dto;
 
-import entities.dto.Airplane;
-import entities.dto.Airport;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
