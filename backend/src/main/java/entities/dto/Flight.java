@@ -16,24 +16,26 @@ public class Flight extends contract.dto.Flight {
 
     @NotNull
     @Basic(optional = false)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DEPARTUREDATE")
     private Date depDate;
 
     @NotNull
     @Basic(optional = false)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "ARRIVALDATE")
     private Date arrDate;
 
     @OneToOne
-    @Column(name = "AIRPLANEID")
+    @JoinColumn(name = "AIRPLANEID")
     private Airplane airplane;
 
     @OneToOne
-    @Column(name = "DEPARTUREAIRPORT")
+    @JoinColumn(name = "DEPARTUREAIRPORT")
     private Airport depAirport;
 
     @OneToOne
-    @Column(name = "ARRIVALAIRPORT")
+    @JoinColumn(name = "ARRIVALAIRPORT")
     private Airport arrAirport;
 
 }

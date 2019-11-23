@@ -26,8 +26,8 @@ public class Passenger extends contract.dto.Passenger {
     @Column(name = "LASTNAME")
     private String lastName;
 
-    @Basic(optional = false)
     @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATEOFBIRTH")
     private Date dob;
 

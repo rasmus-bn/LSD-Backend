@@ -8,6 +8,17 @@ import javax.validation.constraints.Size;
 @Table(name = "AIRPLANE")
 public class Airplane extends contract.dto.Airplane {
 
+    public Airplane() {
+        super(0,null);
+    }
+
+    public Airplane(@NotNull @Size(min = 1, max = 2000) int capacity, @Size(max = 4) String iata) {
+        super(capacity, iata);
+        this.capacity = capacity;
+        this.iata = iata;
+    }
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")

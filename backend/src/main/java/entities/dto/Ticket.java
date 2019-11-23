@@ -12,11 +12,11 @@ public class Ticket extends contract.dto.Ticket {
     private int Id;
 
     @OneToOne
-    @Column(name = "PASSENGERID")
+    @JoinColumn(name = "PASSENGERID")
     private Passenger passenger;
 
     @OneToOne
-    @Column(name = "FLIGHTID")
+    @JoinColumn(name = "FLIGHTID")
     private Flight flight;
 
 }

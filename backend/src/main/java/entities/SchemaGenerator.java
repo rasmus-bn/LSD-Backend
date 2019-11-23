@@ -1,5 +1,6 @@
 package entities;
 
+import entities.dto.Airplane;
 import entities.factory.FlightInstanceFactory;
 
 import javax.persistence.EntityManager;
@@ -18,9 +19,16 @@ public class SchemaGenerator {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("sebastian");
         EntityManager em = emf.createEntityManager();
+
+
+        Airplane a = new Airplane(200, "720");
+        em.getTransaction().begin();
+        em.persist(a);
+        em.getTransaction().commit();
+
 //        basicSetup(em);
 //        query(em);
-        inertData(em);
+//        inertData(em);
 //        System.out.println(em.getReference(FlightInstance.class, 1));
 //        System.out.println(em.getReference(FlightInstance.class, 2));
     }
