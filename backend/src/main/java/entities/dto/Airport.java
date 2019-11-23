@@ -10,7 +10,7 @@ import java.util.TimeZone;
 public class Airport extends contract.dto.Airport {
 
 
-    public Airport(@NotNull @Size(min = 1, max = 2000) TimeZone timeZone, @NotNull @Size(max = 3) String iata, @NotNull @Size(min = 1, max = 2000) String name) {
+    public Airport(TimeZone timeZone, String iata, String name) {
         super(timeZone, iata, name);
         this.timeZone = timeZone;
         this.iata = iata;

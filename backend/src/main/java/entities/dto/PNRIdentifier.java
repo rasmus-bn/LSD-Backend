@@ -10,10 +10,10 @@ public class PNRIdentifier extends contract.dto.PNRIdentifier {
 
     public PNRIdentifier(long pnr) {
         super(pnr);
+        this.pnr = pnr;
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private long pnr;
 }

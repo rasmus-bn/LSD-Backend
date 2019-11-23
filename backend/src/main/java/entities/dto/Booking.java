@@ -9,9 +9,17 @@ import java.util.Collection;
 @Table(name = "BOOKING")
 public class Booking extends contract.dto.Booking {
 
-    public Booking(contract.dto.PNRIdentifier pnr, double price, contract.dto.FFNCCIdenitfier ffncc, Collection<contract.dto.Ticket> tickets, contract.dto.FlightRoute flightRoute, contract.dto.FlightRoute returnRoute) {
-        super(pnr, price, ffncc, tickets, flightRoute, returnRoute);
+    public Booking(PNRIdentifier pnr, double price, FFNCCIdenitfier ffncc, Collection<Ticket> tickets, FlightRoute flightRoute, FlightRoute returnRoute) {
+        super();
+        this.pnr = pnr;
+        this.price = price;
+        this.ffncc = ffncc;
+        this.tickets = tickets;
+        this.flightRoute = flightRoute;
+        this.returnRoute = returnRoute;
+
     }
+
 
     public Booking() {
     }

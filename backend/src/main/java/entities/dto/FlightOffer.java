@@ -7,8 +7,12 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "FLIGHTOFFER")
 public class FlightOffer extends contract.dto.FlightOffer{
-    public FlightOffer(double price, boolean oneWay, contract.dto.FlightRoute outRoute, contract.dto.FlightRoute returnRoute) {
+    public FlightOffer(double price, boolean oneWay, FlightRoute outRoute, FlightRoute returnRoute) {
         super(price, oneWay, outRoute, returnRoute);
+        this.price = price;
+        this.oneWay = oneWay;
+        this.outRoute = outRoute;
+        this.returnRoute = returnRoute;
     }
 
     public FlightOffer() {

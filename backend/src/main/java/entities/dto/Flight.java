@@ -7,9 +7,15 @@ import java.util.Date;
 @Entity
 @Table(name = "FLIGHT")
 public class Flight extends contract.dto.Flight {
-    public Flight(long id, Date depDate, Date arrDate, contract.dto.Airplane airplane, contract.dto.Airport depAirport, contract.dto.Airport arrAirport) {
+    public Flight(long id, Date depDate, Date arrDate, Airplane airplane, Airport depAirport, Airport arrAirport) {
         super(id, depDate, arrDate, airplane, depAirport, arrAirport);
+        this.depDate = depDate;
+        this.arrDate = arrDate;
+        this.airplane =  airplane;
+        this.depAirport =  depAirport;
+        this.arrAirport =  arrAirport;
     }
+
 
     public Flight() {
     }

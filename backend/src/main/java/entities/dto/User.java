@@ -7,12 +7,16 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "USER")
 public class User extends contract.dto.User {
-    public User(int userId, int agencyNumber, String userName, String password) {
-        super(userId, agencyNumber, userName, password);
-    }
-
     public User() {
     }
+
+    public User(int userId, int agencyNumber, String userName, String password) {
+        super(userId, agencyNumber, userName, password);
+        this.agencyNumber = agencyNumber;
+        this.userName = userName;
+        this.password = password;
+    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

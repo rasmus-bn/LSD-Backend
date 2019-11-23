@@ -7,8 +7,10 @@ import java.util.Collection;
 @Entity
 @Table( name = "FLIGHTROUTE")
 public class FlightRoute extends contract.dto.FlightRoute {
-    public FlightRoute(boolean directFlight, Collection<contract.dto.Flight> flights) {
-        super(directFlight, flights);
+    public FlightRoute(boolean directFlight, Collection<Flight> flights) {
+        super();
+        this.directFlight = directFlight;
+        this.flights = flights;
     }
 
     public FlightRoute() {

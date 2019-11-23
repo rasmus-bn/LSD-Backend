@@ -5,8 +5,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "TICKET")
 public class Ticket extends contract.dto.Ticket {
-    public Ticket(contract.dto.Passenger passenger, contract.dto.Flight flight) {
+    public Ticket(Passenger passenger, Flight flight) {
         super(passenger, flight);
+        this.flight = flight;
+        this.passenger = passenger;
     }
 
     public Ticket() {

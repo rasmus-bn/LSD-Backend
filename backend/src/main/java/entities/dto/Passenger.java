@@ -10,6 +10,9 @@ import java.util.Date;
 public class Passenger extends contract.dto.Passenger {
     public Passenger(String firstName, String lastName, Date dob) {
         super(firstName, lastName, dob);
+        this.dob = dob;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Passenger() {
