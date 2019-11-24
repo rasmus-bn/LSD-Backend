@@ -6,12 +6,11 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "USER")
-public class User extends contract.dto.User {
+public class User {
     public User() {
     }
 
     public User(int userId, int agencyNumber, String userName, String password) {
-        super(userId, agencyNumber, userName, password);
         this.agencyNumber = agencyNumber;
         this.userName = userName;
         this.password = password;
@@ -40,5 +39,39 @@ public class User extends contract.dto.User {
     @Column(name = "PASSWORD")
     String password;
 
+    public int getUserId() {
+        return userId;
+    }
 
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getAgencyNumber() {
+        return agencyNumber;
+    }
+
+    public void setAgencyNumber(int agencyNumber) {
+        this.agencyNumber = agencyNumber;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public contract.dto.User toDto() {
+        return new contract.dto.User(this.userId,this.agencyNumber,this.userName,this.password);
+    }
 }

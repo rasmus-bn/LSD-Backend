@@ -7,11 +7,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "FFNCIDENITFIER")
-public class FFNCCIdenitfier extends contract.dto.FFNCCIdenitfier {
+public class FFNCCIdenitfier {
 
-    public FFNCCIdenitfier(String ffcc) {
-        super(ffcc);
-        this.ffcc = ffcc;
+    public FFNCCIdenitfier(String ffncc) {
+        this.ffncc = ffncc;
     }
 
     public FFNCCIdenitfier() {
@@ -19,5 +18,21 @@ public class FFNCCIdenitfier extends contract.dto.FFNCCIdenitfier {
 
     @Id
     @Column(name = "ID")
-    private String ffcc;
+    private String ffncc;
+
+    public FFNCCIdenitfier(contract.dto.FFNCCIdenitfier ffncc) {
+        this.ffncc = ffncc.getFfcc();
+    }
+
+    public contract.dto.FFNCCIdenitfier toDto() {
+        return new contract.dto.FFNCCIdenitfier(this.ffncc);
+    }
+
+    public String getFfncc() {
+        return ffncc;
+    }
+
+    public void setFfncc(String ffncc) {
+        this.ffncc = ffncc;
+    }
 }

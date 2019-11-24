@@ -7,9 +7,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "PASSENGER")
-public class Passenger extends contract.dto.Passenger {
+public class Passenger {
     public Passenger(String firstName, String lastName, Date dob) {
-        super(firstName, lastName, dob);
         this.dob = dob;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -40,5 +39,39 @@ public class Passenger extends contract.dto.Passenger {
     @Column(name = "DATEOFBIRTH")
     private Date dob;
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public contract.dto.Passenger toDto() {
+        return new contract.dto.Passenger(this.firstName, this.lastName, this.dob);
+    }
 }

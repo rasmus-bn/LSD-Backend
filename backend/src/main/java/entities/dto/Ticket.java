@@ -4,9 +4,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "TICKET")
-public class Ticket extends contract.dto.Ticket {
+public class Ticket {
     public Ticket(Passenger passenger, Flight flight) {
-        super(passenger, flight);
         this.flight = flight;
         this.passenger = passenger;
     }
@@ -27,4 +26,7 @@ public class Ticket extends contract.dto.Ticket {
     @JoinColumn(name = "FLIGHTID")
     private Flight flight;
 
+    public contract.dto.Ticket toDto() {
+        return new contract.dto.Ticket(this.passenger.toDto(), this.flight.toDto());
+    }
 }

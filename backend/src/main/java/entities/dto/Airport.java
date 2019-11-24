@@ -7,11 +7,10 @@ import java.util.TimeZone;
 
 @Entity
 @Table(name = "AIRPORT")
-public class Airport extends contract.dto.Airport {
+public class Airport {
 
 
     public Airport(TimeZone timeZone, String iata, String name) {
-        super(timeZone, iata, name);
         this.timeZone = timeZone;
         this.iata = iata;
         this.name = name;
@@ -44,4 +43,45 @@ public class Airport extends contract.dto.Airport {
     @Column(name = "NAME")
     private String name;
 
+    public Airport(contract.dto.Airport a) {
+        this.iata = a.getIata();
+        this.name = a.getName();
+        this.timeZone = a.getTimeZone();
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public TimeZone getTimeZone() {
+        return timeZone;
+    }
+
+    public void setTimeZone(TimeZone timeZone) {
+        this.timeZone = timeZone;
+    }
+
+    public String getIata() {
+        return iata;
+    }
+
+    public void setIata(String iata) {
+        this.iata = iata;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public contract.dto.Airport toDto() {
+        return new contract.dto.Airport(this.timeZone, this.iata, this.name);
+    }
 }

@@ -4,16 +4,19 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PNRIDENTIFIER")
-public class PNRIdentifier extends contract.dto.PNRIdentifier {
+public class PNRIdentifier {
     public PNRIdentifier() {
     }
 
     public PNRIdentifier(long pnr) {
-        super(pnr);
         this.pnr = pnr;
     }
 
     @Id
     @Column(name = "ID")
     private long pnr;
+
+    public contract.dto.PNRIdentifier toDto() {
+        return new contract.dto.PNRIdentifier(this.pnr);
+    }
 }
