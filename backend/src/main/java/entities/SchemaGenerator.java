@@ -49,24 +49,31 @@ public class SchemaGenerator {
         List<Flight> flights = new ArrayList();
 
 
-        flights.add(new Flight(new java.sql.Date(new Date(119, 10, 25, 14,00).getTime()), new java.sql.Date(new Date(119,10,25,16,00).getTime()),airplaneSAS1, cph, stn, sas));
-        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 16,00).getTime()), new java.sql.Date(new Date(119,11,25,18,00).getTime()),airplaneSAS2, cph, bcn, sas));
-        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 18,00).getTime()), new java.sql.Date(new Date(119,11,25,20,00).getTime()),airplaneSAS3, cph, cdg, sas));
+        Date currentDate = new Date(119, 10, 25, 00, 00);;
+        Date endDate = new Date(120, 11,30,40,00);
+        System.out.println(endDate);
+        while(endDate.after(currentDate)){
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 14)), new java.sql.Date(currentDate.getTime() + (3600000l * 16)),airplaneSAS1, cph, stn, sas));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 16)), new java.sql.Date(currentDate.getTime() + (3600000l * 18)),airplaneSAS2, cph, bcn, sas));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 18)), new java.sql.Date(currentDate.getTime() + (3600000l * 20)),airplaneSAS3, cph, cdg, sas));
 
-        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 13,00).getTime()), new java.sql.Date(new Date(119,11,25,15,00).getTime()),airplaneNor, cph, sfx, norwegian));
-        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 15,00).getTime()), new java.sql.Date(new Date(119,11,25,17,00).getTime()),airplaneNor1, cph, stn, norwegian));
-        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 17,00).getTime()), new java.sql.Date(new Date(119,11,25,19,00).getTime()),airplaneNor2, cph, bcn, norwegian));
-        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 19,00).getTime()), new java.sql.Date(new Date(119,11,25,21,00).getTime()),airplaneNor3, cph, cdg, norwegian));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 13)), new java.sql.Date(currentDate.getTime() + (3600000l * 15)),airplaneNor, cph, sfx, norwegian));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 15)), new java.sql.Date(currentDate.getTime() + (3600000l * 17)),airplaneNor1, cph, stn, norwegian));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 17)), new java.sql.Date(currentDate.getTime() + (3600000l * 19)),airplaneNor2, cph, bcn, norwegian));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 19)), new java.sql.Date(currentDate.getTime() + (3600000l * 21)),airplaneNor3, cph, cdg, norwegian));
 
-        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 11,00).getTime()), new java.sql.Date(new Date(119,11,25,13,00).getTime()),airplaneLuft, cph, sfx, lufthansa));
-        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 13,00).getTime()), new java.sql.Date(new Date(119,11,25,15,00).getTime()),airplaneLuft1, cph, stn, lufthansa));
-        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 15,00).getTime()), new java.sql.Date(new Date(119,11,25,17,00).getTime()),airplaneLuft2, cph, bcn, lufthansa));
-        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 17,00).getTime()), new java.sql.Date(new Date(119,11,25,19,00).getTime()),airplaneLuft3, cph, cdg, lufthansa));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 11)), new java.sql.Date(currentDate.getTime() + (3600000l * 13)),airplaneLuft, cph, sfx, lufthansa));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 13)), new java.sql.Date(currentDate.getTime() + (3600000l * 15)),airplaneLuft1, cph, stn, lufthansa));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 15)), new java.sql.Date(currentDate.getTime() + (3600000l * 17)),airplaneLuft2, cph, bcn, lufthansa));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 17)), new java.sql.Date(currentDate.getTime() + (3600000l * 19)),airplaneLuft3, cph, cdg, lufthansa));
 
-        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 14,00).getTime()), new java.sql.Date(new Date(119,11,25,16,00).getDate()),airplaneEmi, cph, sfx, emirates));
-        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 16,00).getTime()), new java.sql.Date(new Date(119,11,25,18,00).getTime()),airplaneEmi1, cph, stn, emirates));
-        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 18,00).getTime()), new java.sql.Date(new Date(119,11,25,20,00).getTime()),airplaneEmi2, cph, bcn, emirates));
-        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 20,00).getTime()), new java.sql.Date(new Date(119,11,25,22,00).getTime()),airplaneEmi3, cph, cdg, emirates));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 14)), new java.sql.Date(currentDate.getTime() + (3600000l * 16)),airplaneEmi, cph, sfx, emirates));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 16)), new java.sql.Date(currentDate.getTime() + (3600000l * 18)),airplaneEmi1, cph, stn, emirates));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 18)), new java.sql.Date(currentDate.getTime() + (3600000l * 20)),airplaneEmi2, cph, bcn, emirates));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 20)), new java.sql.Date(currentDate.getTime() + (3600000l * 22)),airplaneEmi3, cph, cdg, emirates));
+
+            currentDate.setTime(currentDate.getTime() + 86400000l);
+        }
 
         em.getTransaction().begin();
         em.persist(sas);
@@ -79,7 +86,8 @@ public class SchemaGenerator {
         em.persist(cdg);
         em.persist(bcn);
         for(Flight f : flights){
-        em.persist(f);
+            em.persist(f);
+//            System.out.println("Adding flight!");
         }
 
         em.getTransaction().commit();
