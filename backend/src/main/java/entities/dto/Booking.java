@@ -10,9 +10,8 @@ import java.util.Collection;
 @Table(name = "BOOKING")
 public class Booking {
 
-    public Booking(PNRIdentifier pnr, double price, FFNCCIdenitfier ffncc, Collection<Ticket> tickets,
+    public Booking(double price, String ffncc, Collection<Ticket> tickets,
                    FlightRoute flightRoute, FlightRoute returnRoute) {
-        this.pnr = pnr;
         this.price = price;
         this.ffncc = ffncc;
         this.tickets = tickets;
@@ -26,11 +25,8 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    int id;
-
-    @ManyToOne
-    private PNRIdentifier pnr;
+    @Column(name = "PNR")
+    private long pnr;
 
     @NotNull
     @Basic(optional = false)
@@ -38,16 +34,18 @@ public class Booking {
     @Column(name = "PRICE")
     private double price;
 
-    @ManyToOne
-    private FFNCCIdenitfier ffncc;
+    @NotNull
+    @Basic(optional = false)
+    @Column(name = "FFNCC")
+    private String ffncc;
 
-    @OneToMany
+    @OneToMany (cascade = CascadeType.ALL)
     private Collection<Ticket> tickets;
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.ALL)
     private FlightRoute flightRoute;
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.ALL)
     private FlightRoute returnRoute;
 
     public contract.dto.Booking toDto() {
@@ -56,27 +54,19 @@ public class Booking {
             tmp.add(t.toDto());
         }
         return new contract.dto.Booking(
-                this.pnr.toDto(),
+                new contract.dto.PNRIdentifier(this.pnr),
                 this.price,
-                this.ffncc.toDto(),
-                tmp, //TODO convert entity collection to dto collection
+                new contract.dto.FFNCCIdenitfier(this.ffncc),
+                tmp,
                 this.flightRoute.toDto(),
                 this.returnRoute.toDto());
         }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public PNRIdentifier getPnr() {
+    public long getPnr() {
         return pnr;
     }
 
-    public void setPnr(PNRIdentifier pnr) {
+    public void setPnr(long pnr) {
         this.pnr = pnr;
     }
 
@@ -88,11 +78,11 @@ public class Booking {
         this.price = price;
     }
 
-    public FFNCCIdenitfier getFfncc() {
+    public String getFfncc() {
         return ffncc;
     }
 
-    public void setFfncc(FFNCCIdenitfier ffncc) {
+    public void setFfncc(String ffncc) {
         this.ffncc = ffncc;
     }
 

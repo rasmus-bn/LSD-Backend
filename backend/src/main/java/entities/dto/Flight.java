@@ -1,13 +1,14 @@
 package entities.dto;
 
+import com.sun.istack.internal.NotNull;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
 @Table(name = "FLIGHT")
 public class Flight {
-    public Flight(long id, Date depDate, Date arrDate, Airplane airplane, Airport depAirport, Airport arrAirport) {
+    public Flight(Date depDate, Date arrDate, Airplane airplane, Airport depAirport, Airport arrAirport) {
         this.depDate = depDate;
         this.arrDate = arrDate;
         this.airplane =  airplane;
@@ -36,15 +37,15 @@ public class Flight {
     @Column(name = "ARRIVALDATE")
     private Date arrDate;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "AIRPLANEID")
     private Airplane airplane;
 
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "DEPARTUREAIRPORT")
     private Airport depAirport;
 
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "ARRIVALAIRPORT")
     private Airport arrAirport;
 

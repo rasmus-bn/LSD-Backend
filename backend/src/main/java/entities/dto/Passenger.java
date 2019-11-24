@@ -39,6 +39,13 @@ public class Passenger {
     @Column(name = "DATEOFBIRTH")
     private Date dob;
 
+    public Passenger(contract.dto.Passenger p) {
+        this.firstName = p.getFirstName();
+        this.lastName = p.getLastName();
+        this.dob = p.getDob();
+
+    }
+
     public int getId() {
         return id;
     }

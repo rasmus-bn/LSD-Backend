@@ -1,5 +1,8 @@
 package entities.dto;
 
+
+import logic.logicHandler;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -26,14 +29,18 @@ public class FlightRoute {
     @Column(name = "DIRECTFLIGHT")
     private boolean directFlight;
 
-    @ManyToMany
+    @ManyToMany (cascade = CascadeType.ALL)
     private Collection<Flight> flights;
+
+    @Transient
+    logicHandler lh = new logicHandler();
 
     public FlightRoute(contract.dto.FlightRoute fr) {
         this.directFlight = fr.isDirectFlight();
         this.flights = new ArrayList();
         for (contract.dto.Flight f: fr.getFlights()) {
-            this.flights.add(new Flight(f));
+            this.flights.add(lh.findFlightOnContract(f));
+//            this.flights.add(new Flight(f));
         }
     }
 

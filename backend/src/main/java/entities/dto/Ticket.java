@@ -18,7 +18,7 @@ public class Ticket {
     @Column(name = "ID")
     private int Id;
 
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "PASSENGERID")
     private Passenger passenger;
 

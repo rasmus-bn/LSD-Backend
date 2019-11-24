@@ -6,8 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "FLIGHTOFFER")
 public class FlightOffer {
     public FlightOffer(double price, boolean oneWay, FlightRoute outRoute, FlightRoute returnRoute) {
         this.price = price;
@@ -19,35 +17,17 @@ public class FlightOffer {
     public FlightOffer() {
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    int id;
+    public FlightOffer(contract.dto.FlightOffer fo){
+        this.price = fo.getPrice();
+        this.oneWay = fo.isOneWay();
+        this.outRoute = new FlightRoute(fo.getOutRoute());
+        this.returnRoute = new FlightRoute(fo.getReturnRoute());
+    }
 
-    @NotNull
-    @Basic(optional = false)
-    @Size(min = 1, max = 200000)
-    @Column(name = "PRICE")
     private double price;
-
-    @NotNull
-    @Basic(optional = false)
-    @Column(name = "ONEWAY")
     private boolean oneWay;
-
-    @ManyToOne
     private FlightRoute outRoute;
-
-    @ManyToOne
     private FlightRoute returnRoute;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public double getPrice() {
         return price;
@@ -84,4 +64,6 @@ public class FlightOffer {
     public contract.dto.FlightOffer toDto(){
         return new contract.dto.FlightOffer(this.price, this.oneWay, this.outRoute.toDto(), this.returnRoute.toDto());
     }
+
+
 }
