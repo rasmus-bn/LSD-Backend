@@ -14,6 +14,7 @@
         <class>entities.dto.Passenger</class>
         <class>entities.dto.PNRIdentifier</class>
         <class>entities.dto.Ticket</class>
+        <class>entities.dto.Carrier</class>
         <class>entities.dto.User</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://alfen.me:3307/sebastian" />

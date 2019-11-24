@@ -34,7 +34,7 @@ public class Airport extends contract.dto.Airport {
 
     @Basic(optional = false)
     @NotNull
-    @Size(max = 3)
+    @Size(max = 10)
     @Column(name = "IATA")
     private String iata;
 

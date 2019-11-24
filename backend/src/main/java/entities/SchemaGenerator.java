@@ -1,19 +1,12 @@
 package entities;
 
 import entities.dto.*;
-import org.eclipse.persistence.exceptions.PersistenceUnitLoadingException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.awt.print.Book;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.*;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class SchemaGenerator {
@@ -21,42 +14,79 @@ public class SchemaGenerator {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("sebastian");
         EntityManager em = emf.createEntityManager();
 
+        Carrier sas = new Carrier("Scandinavian Airlines(SAS)", "SK");
+        Carrier norwegian = new Carrier("Norwegian Air International", "D8");
+        Carrier lufthansa = new Carrier("Lufthansa", "LF");
+        Carrier emirates = new Carrier("Emirates Airlines", "EK");
 
-        Airplane a = new Airplane(200, "720");
-        Airport a2 = new Airport(TimeZone.getTimeZone("Europe/Copenhagen"), "CPH", "Copenhagen");
-        Airport a3 = new Airport(TimeZone.getTimeZone("Europe/Copenhagen"), "BER", "Berlin");
-        User u = new User(1, 1, "admin", "admin");
-        Passenger p = new Passenger("somename","someothername", new Date(70,1,1));
-        PNRIdentifier pnr = new PNRIdentifier(21l);
-        FFNCCIdenitfier ffnc = new FFNCCIdenitfier("321w");
-        Flight fl = new Flight(22l, new Date(34,1,1),new Date(34,1,1), a, a2,a3);
-        Ticket t = new Ticket(p, fl);
-        FlightRoute fr = new FlightRoute(true, null);
-        Booking b = new Booking(pnr, 200, ffnc, null, fr, null);
-        FlightOffer fo = new FlightOffer(200, true, fr, null);
+        Airport cph = new Airport(TimeZone.getTimeZone("Europe/Copenhagen"), "CPH", "Copenhagen Airport");
+        Airport sfx = new Airport(TimeZone.getTimeZone("Europe/Berlin"), "SFX", "Berlin Airport");
+        Airport cdg = new Airport(TimeZone.getTimeZone("Europe/Paris"), "CDG", "Charles De Gaule");
+        Airport stn = new Airport(TimeZone.getTimeZone("Europe/London"), "STN", "Stansted Airport");
+        Airport bcn = new Airport(TimeZone.getTimeZone("Europe/Barcelona"), "BCN", "Barcelona International Airport");
+
+        List <Airplane> airplanes = new ArrayList();
+        Airplane airplaneSAS = new Airplane(200, sas);
+        Airplane airplaneSAS1 = new Airplane(200, sas);
+        Airplane airplaneSAS2 = new Airplane(200, sas);
+        Airplane airplaneSAS3 = new Airplane(200, sas);
+
+        Airplane airplaneNor = new Airplane(200, norwegian);
+        Airplane airplaneNor1 = new Airplane(200, norwegian);
+        Airplane airplaneNor2 = new Airplane(200, norwegian);
+        Airplane airplaneNor3 = new Airplane(200, norwegian);
+
+        Airplane airplaneEmi = new Airplane(200, emirates);
+        Airplane airplaneEmi1 = new Airplane(200, emirates);
+        Airplane airplaneEmi2 = new Airplane(200, emirates);
+        Airplane airplaneEmi3 = new Airplane(200, emirates);
+
+        Airplane airplaneLuft = new Airplane(200, lufthansa);
+        Airplane airplaneLuft1 = new Airplane(200, lufthansa);
+        Airplane airplaneLuft2 = new Airplane(200, lufthansa);
+        Airplane airplaneLuft3 = new Airplane(200, lufthansa);
+
+        List<Flight> flights = new ArrayList();
+
+
+        flights.add(new Flight(new java.sql.Date(new Date(119, 10, 25, 14,00).getTime()), new java.sql.Date(new Date(119,10,25,16,00).getTime()),airplaneSAS1, cph, stn, sas));
+        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 16,00).getTime()), new java.sql.Date(new Date(119,11,25,18,00).getTime()),airplaneSAS2, cph, bcn, sas));
+        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 18,00).getTime()), new java.sql.Date(new Date(119,11,25,20,00).getTime()),airplaneSAS3, cph, cdg, sas));
+
+        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 13,00).getTime()), new java.sql.Date(new Date(119,11,25,15,00).getTime()),airplaneNor, cph, sfx, norwegian));
+        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 15,00).getTime()), new java.sql.Date(new Date(119,11,25,17,00).getTime()),airplaneNor1, cph, stn, norwegian));
+        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 17,00).getTime()), new java.sql.Date(new Date(119,11,25,19,00).getTime()),airplaneNor2, cph, bcn, norwegian));
+        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 19,00).getTime()), new java.sql.Date(new Date(119,11,25,21,00).getTime()),airplaneNor3, cph, cdg, norwegian));
+
+        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 11,00).getTime()), new java.sql.Date(new Date(119,11,25,13,00).getTime()),airplaneLuft, cph, sfx, lufthansa));
+        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 13,00).getTime()), new java.sql.Date(new Date(119,11,25,15,00).getTime()),airplaneLuft1, cph, stn, lufthansa));
+        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 15,00).getTime()), new java.sql.Date(new Date(119,11,25,17,00).getTime()),airplaneLuft2, cph, bcn, lufthansa));
+        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 17,00).getTime()), new java.sql.Date(new Date(119,11,25,19,00).getTime()),airplaneLuft3, cph, cdg, lufthansa));
+
+        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 14,00).getTime()), new java.sql.Date(new Date(119,11,25,16,00).getDate()),airplaneEmi, cph, sfx, emirates));
+        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 16,00).getTime()), new java.sql.Date(new Date(119,11,25,18,00).getTime()),airplaneEmi1, cph, stn, emirates));
+        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 18,00).getTime()), new java.sql.Date(new Date(119,11,25,20,00).getTime()),airplaneEmi2, cph, bcn, emirates));
+        flights.add(new Flight(new java.sql.Date(new Date(119, 11, 25, 20,00).getTime()), new java.sql.Date(new Date(119,11,25,22,00).getTime()),airplaneEmi3, cph, cdg, emirates));
 
         em.getTransaction().begin();
-        em.persist(pnr);
-        em.persist(a);
-        em.persist(a2);
-        em.persist(a3);
-        em.persist(u);
-        em.persist(p);
-        em.persist(ffnc);
-        em.persist(fl);
-        em.persist(t);
-        em.persist(fr);
-        em.persist(b);
-        em.persist(fo);
-
+        em.persist(sas);
+        em.persist(norwegian);
+        em.persist(lufthansa);
+        em.persist(emirates);
+        em.persist(cph);
+        em.persist(sfx);
+        em.persist(stn);
+        em.persist(cdg);
+        em.persist(bcn);
+        for(Flight f : flights){
+        em.persist(f);
+        }
 
         em.getTransaction().commit();
-
-//        basicSetup(em);
-//        query(em);
-//        inertData(em);
-//        System.out.println(em.getReference(FlightInstance.class, 1));
-//        System.out.println(em.getReference(FlightInstance.class, 2));
+    }
+    private static java.util.Date convertDate(java.sql.Date sqlDate) {
+        java.util.Date uDate = new java.util.Date(sqlDate.getTime());
+        return uDate;
     }
 }
 //

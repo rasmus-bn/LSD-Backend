@@ -4,11 +4,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "TICKET")
-public class Ticket extends contract.dto.Ticket {
+public class Ticket {
+
     public Ticket(Passenger passenger, Flight flight) {
-        super(passenger, flight);
-        this.flight = flight;
         this.passenger = passenger;
+        this.flight = flight;
     }
 
     public Ticket() {
@@ -27,4 +27,27 @@ public class Ticket extends contract.dto.Ticket {
     @JoinColumn(name = "FLIGHTID")
     private Flight flight;
 
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public Passenger getPassenger() {
+        return passenger;
+    }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
+    }
 }
