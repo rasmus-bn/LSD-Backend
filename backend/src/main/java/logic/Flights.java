@@ -1,6 +1,7 @@
 package logic;
 
 import contract.dto.*;
+import entities.dto.Carrier;
 import entities.dto.Flight;
 import entities.dto.FlightOffer;
 
@@ -53,4 +54,9 @@ public class Flights {
                 .getResultList().get(0);
     }
 
+    public Carrier findCarrier(EntityManager em, String iata) {
+        return em.createQuery("SELECT C FROM Carrier C WHERE C.iata = :iata", Carrier.class)
+                .setParameter("iata", iata)
+                .getSingleResult();
+    }
 }

@@ -29,7 +29,7 @@ public class FlightRoute {
     @Column(name = "DIRECTFLIGHT")
     private boolean directFlight;
 
-    @ManyToMany (cascade = CascadeType.ALL)
+    @ManyToMany (cascade = CascadeType.PERSIST)
     private Collection<Flight> flights;
 
     @Transient

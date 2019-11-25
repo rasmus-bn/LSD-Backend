@@ -42,10 +42,10 @@ public class Booking {
     @OneToMany (cascade = CascadeType.ALL)
     private Collection<Ticket> tickets;
 
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne (cascade = CascadeType.PERSIST)
     private FlightRoute flightRoute;
 
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne (cascade = CascadeType.PERSIST)
     private FlightRoute returnRoute;
 
     public contract.dto.Booking toDto() {

@@ -10,12 +10,11 @@ public class User {
     public User() {
     }
 
-    public User(int userId, int agencyNumber, String userName, String password) {
+    public User(int agencyNumber, String userName, String password) {
         this.agencyNumber = agencyNumber;
         this.userName = userName;
         this.password = password;
     }
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

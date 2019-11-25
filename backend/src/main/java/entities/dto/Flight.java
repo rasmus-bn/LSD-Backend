@@ -1,6 +1,7 @@
 package entities.dto;
 
 import com.sun.istack.internal.NotNull;
+import logic.logicHandler;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -8,12 +9,13 @@ import java.util.Date;
 @Entity
 @Table(name = "FLIGHT")
 public class Flight {
-    public Flight(Date depDate, Date arrDate, Airplane airplane, Airport depAirport, Airport arrAirport) {
+    public Flight(Date depDate, Date arrDate, Airplane airplane, Airport depAirport, Airport arrAirport, Carrier carrier) {
         this.depDate = depDate;
         this.arrDate = arrDate;
         this.airplane =  airplane;
         this.depAirport =  depAirport;
         this.arrAirport =  arrAirport;
+        this.carrier = carrier;
     }
 
     public Flight() {
@@ -49,12 +51,21 @@ public class Flight {
     @JoinColumn(name = "ARRIVALAIRPORT")
     private Airport arrAirport;
 
+    @ManyToOne (cascade = CascadeType.PERSIST)
+    @NotNull
+    @JoinColumn(name = "CARRIER")
+    private Carrier carrier;
+
+    @Transient
+    logicHandler lh = new logicHandler();
+
     public Flight(contract.dto.Flight f) {
         this.airplane = new Airplane(f.getAirplane());
         this.arrAirport = new Airport(f.getArrAirport());
         this.depAirport = new Airport(f.getDepAirport());
         this.arrDate = f.getArrDate();
         this.depDate = f.getDepDate();
+        this.carrier = lh.findCarrier(f.getAirplane().getIata());
     }
 
     public long getId() {
@@ -103,6 +114,14 @@ public class Flight {
 
     public void setArrAirport(Airport arrAirport) {
         this.arrAirport = arrAirport;
+    }
+
+    public Carrier getCarrier() {
+        return carrier;
+    }
+
+    public void setCarrier(Carrier carrier) {
+        this.carrier = carrier;
     }
 
     public contract.dto.Flight toDto() {

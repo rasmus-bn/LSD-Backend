@@ -4,6 +4,7 @@ import contract.dto.FFNCCIdenitfier;
 import contract.dto.FlightOffer;
 import contract.dto.PNRIdentifier;
 import contract.dto.Passenger;
+import entities.dto.Carrier;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,7 +13,7 @@ import java.util.Collection;
 import java.util.Date;
 
 public class logicHandler {
-    EntityManagerFactory emf = null;
+//    EntityManagerFactory emf = null;
     EntityManager em = null;
 
     Flights f = new Flights();
@@ -20,8 +21,12 @@ public class logicHandler {
     logic.User u = new logic.User();
 
     public logicHandler() {
-        emf = Persistence.createEntityManagerFactory("sebastian");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("sebastian");
         em = emf.createEntityManager();
+    }
+
+    public logicHandler(EntityManager em){
+        this.em = em;
     }
 
     public contract.dto.User authUser(contract.dto.User user){
@@ -52,6 +57,10 @@ public class logicHandler {
 
     public entities.dto.Flight findFlightOnContract(contract.dto.Flight f_){
         return f.findFlightManuel(em, f_);
+    }
+
+    public Carrier findCarrier(String iata){
+        return f.findCarrier(em, iata);
     }
 
 }

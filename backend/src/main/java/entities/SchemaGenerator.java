@@ -21,15 +21,16 @@ import java.util.ArrayList;
 public class SchemaGenerator {
     static Flights f = new Flights();
     static logic.Booking b = new logic.Booking();
+    static logic.User u = new logic.User();
 
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("sebastian");
         EntityManager em = emf.createEntityManager();
 
-//        Carrier sas = new Carrier("Scandinavian Airlines(SAS)", "SK");
-//        Carrier norwegian = new Carrier("Norwegian Air International", "D8");
-//        Carrier lufthansa = new Carrier("Lufthansa", "LF");
-//        Carrier emirates = new Carrier("Emirates Airlines", "EK");
+        Carrier sas = new Carrier("Scandinavian Airlines(SAS)", "SK");
+        Carrier norwegian = new Carrier("Norwegian Air International", "D8");
+        Carrier lufthansa = new Carrier("Lufthansa", "LF");
+        Carrier emirates = new Carrier("Emirates Airlines", "EK");
 
         Airport cph = new Airport(TimeZone.getTimeZone("Europe/Copenhagen"), "CPH", "Copenhagen Airport");
         Airport sfx = new Airport(TimeZone.getTimeZone("Europe/Berlin"), "SFX", "Berlin Airport");
@@ -37,62 +38,41 @@ public class SchemaGenerator {
         Airport stn = new Airport(TimeZone.getTimeZone("Europe/London"), "STN", "Stansted Airport");
         Airport bcn = new Airport(TimeZone.getTimeZone("Europe/Barcelona"), "BCN", "Barcelona International Airport");
 
-        List <Airplane> airplanes = new ArrayList();
-        Airplane airplaneSAS = new Airplane(200, "sas");
-        Airplane airplaneSAS1 = new Airplane(200, "sas");
-        Airplane airplaneSAS2 = new Airplane(200, "sas");
-        Airplane airplaneSAS3 = new Airplane(200, "sas");
-
-        Airplane airplaneNor = new Airplane(200, "norwegian");
-        Airplane airplaneNor1 = new Airplane(200, "norwegian");
-        Airplane airplaneNor2 = new Airplane(200, "norwegian");
-        Airplane airplaneNor3 = new Airplane(200, "norwegian");
-
-        Airplane airplaneEmi = new Airplane(200, "emirates");
-        Airplane airplaneEmi1 = new Airplane(200, "emirates");
-        Airplane airplaneEmi2 = new Airplane(200, "emirates");
-        Airplane airplaneEmi3 = new Airplane(200, "emirates");
-
-        Airplane airplaneLuft = new Airplane(200, "lufthansa");
-        Airplane airplaneLuft1 = new Airplane(200, "lufthansa");
-        Airplane airplaneLuft2 = new Airplane(200, "lufthansa");
-        Airplane airplaneLuft3 = new Airplane(200, "lufthansa");
-
         List<Flight> flights = new ArrayList();
 
 
         Date currentDate = new Date(119, 10, 25, 00, 00);
         Date endDate = new Date(119, 10,30,40,00);
-        System.out.println(endDate);
         while(endDate.after(currentDate)){
-            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 14)), new java.sql.Date(currentDate.getTime() + (3600000l * 16)),airplaneSAS1, cph, stn));
-            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 16)), new java.sql.Date(currentDate.getTime() + (3600000l * 18)),airplaneSAS2, cph, bcn));
-            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 18)), new java.sql.Date(currentDate.getTime() + (3600000l * 20)),airplaneSAS3, cph, cdg));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 14)), new java.sql.Date(currentDate.getTime() + (3600000l * 16)),new Airplane(200, "sas"), cph, stn, sas));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 16)), new java.sql.Date(currentDate.getTime() + (3600000l * 18)),new Airplane(200, "sas"), cph, bcn, sas));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 18)), new java.sql.Date(currentDate.getTime() + (3600000l * 20)),new Airplane(200, "sas"), cph, cdg, sas));
 
-            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 13)), new java.sql.Date(currentDate.getTime() + (3600000l * 15)),airplaneNor, cph, sfx));
-            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 13)), new java.sql.Date(currentDate.getTime() + (3600000l * 15)),airplaneNor3, sfx, cph));
-            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 15)), new java.sql.Date(currentDate.getTime() + (3600000l * 17)),airplaneNor1, cph, stn));
-            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 17)), new java.sql.Date(currentDate.getTime() + (3600000l * 19)),airplaneNor2, cph, bcn));
-//            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 19)), new java.sql.Date(currentDate.getTime() + (3600000l * 21)),airplaneNor3, cph, cdg));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 13)), new java.sql.Date(currentDate.getTime() + (3600000l * 15)),new Airplane(200, "Norwegian"), cph, sfx, norwegian));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 13)), new java.sql.Date(currentDate.getTime() + (3600000l * 15)),new Airplane(200, "Norwegian"), sfx, cph, norwegian));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 15)), new java.sql.Date(currentDate.getTime() + (3600000l * 17)),new Airplane(200, "Norwegian"), cph, stn, norwegian));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 17)), new java.sql.Date(currentDate.getTime() + (3600000l * 19)),new Airplane(200, "Norwegian"), cph, bcn, norwegian));
 
-//            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 11)), new java.sql.Date(currentDate.getTime() + (3600000l * 13)),airplaneLuft, cph, sfx));
-            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 13)), new java.sql.Date(currentDate.getTime() + (3600000l * 15)),airplaneLuft1, cph, stn));
-            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 15)), new java.sql.Date(currentDate.getTime() + (3600000l * 17)),airplaneLuft2, cph, bcn));
-            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 17)), new java.sql.Date(currentDate.getTime() + (3600000l * 19)),airplaneLuft3, cph, cdg));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 13)), new java.sql.Date(currentDate.getTime() + (3600000l * 15)),new Airplane(200, "lufthansa"), cph, stn, lufthansa));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 15)), new java.sql.Date(currentDate.getTime() + (3600000l * 17)),new Airplane(200, "lufthansa"), cph, bcn, lufthansa));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 17)), new java.sql.Date(currentDate.getTime() + (3600000l * 19)),new Airplane(200, "lufthansa"), cph, cdg, lufthansa));
 
-//            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 14)), new java.sql.Date(currentDate.getTime() + (3600000l * 16)),airplaneEmi, cph, sfx));
-            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 16)), new java.sql.Date(currentDate.getTime() + (3600000l * 18)),airplaneEmi1, cph, stn));
-            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 18)), new java.sql.Date(currentDate.getTime() + (3600000l * 20)),airplaneEmi2, cph, bcn));
-            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 20)), new java.sql.Date(currentDate.getTime() + (3600000l * 22)),airplaneEmi3, cph, cdg));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 16)), new java.sql.Date(currentDate.getTime() + (3600000l * 18)),new Airplane(200, "Emirates"), cph, stn, emirates));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 18)), new java.sql.Date(currentDate.getTime() + (3600000l * 20)),new Airplane(200, "Emirates"), cph, bcn, emirates));
+            flights.add(new Flight(new java.sql.Date(currentDate.getTime() + (3600000l * 20)), new java.sql.Date(currentDate.getTime() + (3600000l * 22)),new Airplane(200, "Emirates"), cph, cdg, emirates));
 
             currentDate.setTime(currentDate.getTime() + 86400000l);
         }
 
+        User user = new User(62, "admin", "admin");
+
         em.getTransaction().begin();
-//        em.persist(sas);
-//        em.persist(norwegian);
-//        em.persist(lufthansa);
-//        em.persist(emirates);
+        em.persist(sas);
+        em.persist(norwegian);
+        em.persist(lufthansa);
+        em.persist(emirates);
+
+        em.persist(user);
         em.persist(cph);
         em.persist(sfx);
         em.persist(stn);
@@ -100,10 +80,12 @@ public class SchemaGenerator {
         em.persist(bcn);
         for(Flight f : flights){
             em.persist(f);
-//            System.out.println("Adding flight!");
         }
 
         em.getTransaction().commit();
+
+
+
         Date d1 = new Date(119, 10, 25, 00, 00);
         Date d2 = new Date(119, 10, 27, 00, 00);
 
@@ -123,10 +105,9 @@ public class SchemaGenerator {
         Collection<contract.dto.Passenger> p = new ArrayList<>();
         p.add(new contract.dto.Passenger("Test", "McBoaty", new Date(1,1,1,1,1,1)));
         b.createBooking(em, foA.get(0), new FFNCCIdenitfier("blablablbal"), p);
-        b.createBooking(em, foA.get(0), new FFNCCIdenitfier("adsakjhjdak"), p);
-        b.createBooking(em, foA.get(0), new FFNCCIdenitfier("jkadskjdsal"), p);
-        b.removeBookingByPNR(em, new contract.dto.PNRIdentifier(1l));
-        System.out.println(b.getBookingByPNR(em, new contract.dto.PNRIdentifier(2l)).getFfncc());
+//        System.out.println(u.authUser(em, new contract.dto.User(21, 62, "admin", "admin")));
+//        System.out.println(u.authUser(em, new contract.dto.User(21, 62, "admin", "admn")));
+
     }
 }
 
