@@ -3,11 +3,12 @@ package entities.dto;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.TimeZone;
 
 @Entity
 @Table(name = "AIRPORT")
-public class Airport {
+public class Airport implements Serializable {
 
 
     public Airport(TimeZone timeZone, String iata, String name) {

@@ -3,10 +3,11 @@ package entities.dto;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "AIRPLANE")
-public class Airplane {
+public class Airplane implements Serializable {
 
     public Airplane() {
     }

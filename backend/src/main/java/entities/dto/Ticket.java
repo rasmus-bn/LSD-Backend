@@ -1,10 +1,11 @@
 package entities.dto;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "TICKET")
-public class Ticket {
+public class Ticket implements Serializable {
     public Ticket(Passenger passenger, Flight flight) {
         this.flight = flight;
         this.passenger = passenger;

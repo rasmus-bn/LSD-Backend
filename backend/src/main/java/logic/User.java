@@ -10,6 +10,7 @@ public class User {
                     .setParameter("password", user.getPassword())
                     .getSingleResult().toDto();
         }catch (Exception e){
+            e.printStackTrace();
             return null;
         }
     }

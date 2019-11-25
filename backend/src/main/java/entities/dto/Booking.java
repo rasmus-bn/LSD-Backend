@@ -3,12 +3,13 @@ package entities.dto;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
 @Table(name = "BOOKING")
-public class Booking {
+public class Booking implements Serializable {
 
     public Booking(double price, String ffncc, Collection<Ticket> tickets,
                    FlightRoute flightRoute, FlightRoute returnRoute) {

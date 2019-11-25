@@ -1,14 +1,15 @@
 package entities.dto;
 
-import com.sun.istack.internal.NotNull;
 import logic.logicHandler;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "FLIGHT")
-public class Flight {
+public class Flight implements Serializable {
     public Flight(Date depDate, Date arrDate, Airplane airplane, Airport depAirport, Airport arrAirport, Carrier carrier) {
         this.depDate = depDate;
         this.arrDate = arrDate;

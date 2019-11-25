@@ -3,11 +3,12 @@ package entities.dto;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "PASSENGER")
-public class Passenger {
+public class Passenger implements Serializable {
     public Passenger(String firstName, String lastName, Date dob) {
         this.dob = dob;
         this.firstName = firstName;

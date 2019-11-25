@@ -5,8 +5,9 @@ import contract.dto.Flight;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
-public class FlightOffer {
+public class FlightOffer implements Serializable {
     public FlightOffer(double price, boolean oneWay, FlightRoute outRoute, FlightRoute returnRoute) {
         this.price = price;
         this.oneWay = oneWay;

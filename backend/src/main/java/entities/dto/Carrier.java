@@ -1,13 +1,15 @@
 package entities.dto;
 
-import com.sun.istack.internal.NotNull;
+
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "CARRIER")
-public class Carrier {
+public class Carrier implements Serializable {
     public Carrier(@NotNull @Size(min = 1, max = 2000) String name, @NotNull @Size(min = 0, max = 10) String iata) {
         this.name = name;
         this.iata = iata;

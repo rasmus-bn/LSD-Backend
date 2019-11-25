@@ -1,9 +1,7 @@
 package logic;
 
-import contract.dto.*;
 import entities.dto.Carrier;
 import entities.dto.Flight;
-import entities.dto.FlightOffer;
 
 import javax.persistence.EntityManager;
 import java.sql.Timestamp;
@@ -28,7 +26,7 @@ public class Flights {
         Timestamp ts1 = new Timestamp(d1.getTime());
         Timestamp ts2 = new Timestamp(d1.getTime() + 86399999l);
         List<Flight> tmp = em.createQuery("SELECT F FROM Flight F WHERE f.depDate BETWEEN :datestart AND " +
-                ":dateend AND F.depAirport.name = :originairport AND F.arrAirport.name = :destAirport", Flight.class)
+                ":dateend AND F.depAirport.iata = :originairport AND F.arrAirport.iata = :destAirport", Flight.class)
                 .setParameter("datestart", ts1)
                 .setParameter("dateend", ts2)
                 .setParameter("originairport", originAirport)
@@ -39,9 +37,9 @@ public class Flights {
 
     public entities.dto.Flight findFlight(EntityManager em, entities.dto.FlightRoute fr){
         ArrayList<entities.dto.Flight> f = (ArrayList<entities.dto.Flight>) fr.getFlights();
-        return em.createQuery("SELECT F FROM Flight F WHERE F.depAirport.name = :dA AND F.arrAirport.name = :aA AND F.depDate = :time", entities.dto.Flight.class)
-                .setParameter("dA", f.get(0).getDepAirport().getName())
-                .setParameter("aA", f.get(0).getArrAirport().getName())
+        return em.createQuery("SELECT F FROM Flight F WHERE F.depAirport.iata = :dA AND F.arrAirport.iata = :aA AND F.depDate = :time", entities.dto.Flight.class)
+                .setParameter("dA", f.get(0).getDepAirport().getIata())
+                .setParameter("aA", f.get(0).getArrAirport().getIata())
                 .setParameter("time", f.get(0).getDepDate())
                 .getResultList().get(0);
     }

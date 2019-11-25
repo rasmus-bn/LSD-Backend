@@ -82,16 +82,10 @@
       <artifactId>spring-data-jpa</artifactId>
       <version>1.11.1.RELEASE</version>
     </dependency>
-    <dependency>
-      <groupId>com.oracle</groupId>
-      <artifactId>ojdbc14</artifactId>
-      <version>10.2.0.3.0</version>
-    </dependency>
-
   </dependencies>
 
   <build>
-    <finalName>backend</finalName>
+    <finalName>4</finalName>
     <testResources>
       <testResource>
         <directory>src/test/resources</directory>

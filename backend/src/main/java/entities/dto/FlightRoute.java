@@ -5,12 +5,13 @@ import logic.logicHandler;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
 @Table( name = "FLIGHTROUTE")
-public class FlightRoute {
+public class FlightRoute implements Serializable {
     public FlightRoute(boolean directFlight, Collection<Flight> flights) {
         this.directFlight = directFlight;
         this.flights = flights;
