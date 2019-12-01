@@ -32,6 +32,11 @@ public class Flights {
                 .setParameter("originairport", originAirport)
                 .setParameter("destAirport", destAirport)
                 .getResultList();
+        if(tmp.size() != 0) {
+            List<Flight> fix = new ArrayList<Flight>();
+            fix.add(tmp.get(0));
+            return fix;
+        }
         return tmp;
     }
 
