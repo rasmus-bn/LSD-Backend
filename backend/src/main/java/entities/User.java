@@ -5,7 +5,10 @@ import sun.security.util.Password;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.DatatypeConverter;
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 @Entity
 @Table(name = "USER")
@@ -20,7 +23,7 @@ public class User implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
 
     @NotNull
@@ -37,7 +40,7 @@ public class User implements Serializable {
 
     @NotNull
     @Size(min = 1, max = 2000)
-    @Column(name = "HASH")
+    @Column(name = "PASSWORD")
     private String password;
 
     public int getUserId() {
@@ -70,5 +73,18 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String hashPassword(String password){
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        md.update(password.getBytes());
+        byte[] digest = md.digest();
+        String myHash = DatatypeConverter.printHexBinary(digest).toUpperCase();
+        return myHash;
     }
 }

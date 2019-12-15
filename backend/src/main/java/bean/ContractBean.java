@@ -2,6 +2,7 @@ package bean;
 
 import contract.dto.*;
 import contract.interfaces.BeanInterface;
+import logic.Flights;
 
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
@@ -11,6 +12,7 @@ import java.util.Date;
 
 @Stateless
 public class ContractBean implements BeanInterface {
+    Flights f = new Flights();
 
     @Resource
     private SessionContext context;
@@ -21,8 +23,8 @@ public class ContractBean implements BeanInterface {
     }
 
     @Override
-    public Collection<FlightOffer> getFlightOffers(User user, Date date, Date date1, String s, String s1, boolean b) {
-        return null;
+    public Collection<FlightOffer> getFlightOffers(User user, Date start, Date end, String depIata, String destIata, boolean oneWay) {
+        return f.getOffers(user, start, end, depIata, destIata, oneWay);
     }
 
     @Override
