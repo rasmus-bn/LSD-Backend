@@ -65,6 +65,7 @@ As for maintenance it would be ideal for us to run this in a kubernetes setup or
 When we decide to release a new version we would perform a rolling release on our swarm, we simply replace the image on a node one after one, to make sure this process goes a smoothly as possible it WILL only release on 1 image at a time, per default settings. If one of our nodes fail to update to our new version, the rolling release will pull the handbrake and stop the release by itself. This ensures you have a chance to see what went wrong in the deployment and make sure you still have a service that works once you went on a total rollout. 
 
 If we choose to run this in a kubernetes Cluster instead of a Docker swarm we will have even more [update strategies](https://blog.container-solutions.com/kubernetes-deployment-strategies) than just a rolling release. This gives us even more control over how we want to perform our update, for some features it could be interresting to test them out first, this is where we would deploy a a/b testing strategy.
+
 <This section describes the process of maintaining the software over time,
 starting from the hand-over to the shutting down of your system. The section
 should be written from the viewpoint of the operator, *not* the developers./>
