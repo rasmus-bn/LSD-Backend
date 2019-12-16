@@ -18,7 +18,7 @@ agencies. So there had to be a login system where the travel agent should identi
 
 ### 1.2. Development process
 In our development process we used several tools while developing our system.
-The tools we used are the following, a VCS tool for better collaboration between each other, a issue tracker / kanban board, several CI tool, a communication tool.
+The tools we used for our development flow are the following, a VCS tool for better collaboration between each other, a issue tracker / kanban board, several CI tool, a communication tool.
 
 For our VCS tool we used github since its based on git, and we all had a good knowledge about how to use git and github. This made it a fairly painless setup process for us to setup and use togheter.
 
@@ -30,11 +30,15 @@ As our communication tool we decided to use Discord, this decision was based on 
 
 So how the workflow then went using our tools would be the following. I go to see what current issues we have avaible in our kanban board (Zenhub), I then assign myself to let others know that I am working on this issue. Then when I am done with this task I push the branch up to our VSC tool and make a merge request. A independent third party of the group will look through the pull request and either accept or deny it depending on CircleCI result and the code quality. If its being accepted we perform a rebase into the master branch and Docker Hub would automaticly perform a build of the newest master branch. If we want to make a semver release on Docker Hub we should do a Github Release with the version number, Docker Hub will then build the image with that tag.
 
+We also used Artifactory to serve a contract project for frontend and backend, so we always had the up to date version and easy access to it. This was to ensure our projects would be easy to connect once we came to it and it would work as flawless as possible.
+
 <In this part you should show off by telling us all you know about software
 development processes and describe which concepts you used to structure your
 development./>
 
 ### 1.3. Software architecture
+
+As we had to split into 2 teams, a frontend and a backend team we sat down togheter at the start of the project, discussed how the project should look when done. We sat down a decided how our entity classes were supposed to look, so we had the same classes and what things the frontend and the backend should be able to communicate. All of this information we put down into a contract project which we then hosted on a Artifactory so we both could add it as a dependency and always be up to date on changes to the contract.
 
 <In this section you illustrate and describe the architecture of your Hackernews clone. That is, you describe how your system is structured and how the different parts interact and communicate with each other./>
 
