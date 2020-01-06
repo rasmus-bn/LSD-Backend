@@ -1,14 +1,9 @@
-package entities;
-
-import sun.security.util.Password;
+package entities.dto;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.DatatypeConverter;
 import java.io.Serializable;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 @Entity
 @Table(name = "USER")
@@ -16,7 +11,7 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(@NotNull @Size(min = 1, max = 2000) int agencyNumber, @NotNull @Size(min = 1, max = 2000) String userName, @NotNull @Size(min = 1, max = 2000) String password) {
+    public User(int agencyNumber, String userName, String password) {
         this.agencyNumber = agencyNumber;
         this.userName = userName;
         this.password = password;
@@ -24,24 +19,25 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userId;
+    @Column(name = "ID")
+    int userId;
 
     @NotNull
     @Basic(optional = false)
     @Size(min = 1, max = 2000)
     @Column(name = "AGENCYNUMBER")
-    private int agencyNumber;
+    int agencyNumber;
 
     @NotNull
     @Basic(optional = false)
     @Size(min = 1, max = 2000)
     @Column(name = "USERNAME")
-    private String userName;
+    String userName;
 
     @NotNull
     @Size(min = 1, max = 2000)
     @Column(name = "PASSWORD")
-    private String password;
+    String password;
 
     public int getUserId() {
         return userId;
@@ -75,16 +71,7 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String hashPassword(String password){
-        MessageDigest md = null;
-        try {
-            md = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        md.update(password.getBytes());
-        byte[] digest = md.digest();
-        String myHash = DatatypeConverter.printHexBinary(digest).toUpperCase();
-        return myHash;
+    public contract.dto.User toDto() {
+        return new contract.dto.User(this.userId,this.agencyNumber,this.userName,this.password);
     }
 }
