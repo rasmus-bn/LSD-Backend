@@ -37,8 +37,4 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # run tests!
-<<<<<<< HEAD
       # run: cp ./settings.xml ~/.m2/ && cd ./backend && mvn integration-test
-=======
-      # - run: cp ./settings.xml ~/.m2/ && cd ./backend && mvn integration-test
->>>>>>> booking-logic

@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class Flights {
+public class flights {
 
     // Fucking mess den her
     public Collection<FlightOffer> getOffers(User user, Date start, Date end, String depIata, String destIata, boolean oneWay){
