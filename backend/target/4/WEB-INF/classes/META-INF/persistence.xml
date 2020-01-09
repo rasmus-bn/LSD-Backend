@@ -14,7 +14,7 @@
         <class>entities.dto.User</class>
         <class>entities.dto.Carrier</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://dcarl.me:3307/sebastian" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/sebastian" />
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="C0MSOUFr3T" />
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
