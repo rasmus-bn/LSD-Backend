@@ -95,7 +95,7 @@ public class DataGenerator {
         passengers.add(new Passenger("John", "Trianson", new Date(1994, 06, 30)));
         passengers.add(new Passenger("Davy", "Jones", new Date(1998, 06, 30)));
         ArrayList<Passenger> rPassengers = new ArrayList<>();
-        for (int i = start; i > end || i >= passengers.size(); i++) {
+        for (int i = start; i <= end && i < passengers.size(); i++) {
             rPassengers.add(passengers.get(i));
         }
         return rPassengers;
@@ -132,18 +132,26 @@ public class DataGenerator {
         FlightRoute[] flightroutes = genFlightRoutes();
         ArrayList<Passenger> passengers = getPassengers(0,0);
         ArrayList<Ticket> tickets = getTickets(passengers, flightroutes[0]);
+        System.out.println("Passengar size: " + passengers.size());
+        System.out.println("Ticket size: " + tickets.size());
         bookings.add(new Booking(getPnr(1), 2400.00, getFfnCc("2000102323"), tickets, flightroutes[0], flightroutes[1]));
 
         passengers = getPassengers(2,6);
         tickets = getTickets(passengers, flightroutes[2]);
+        System.out.println("Passengar size: " + passengers.size());
+        System.out.println("Ticket size: " + tickets.size());
         bookings.add(new Booking(getPnr(2), 5000.00, getFfnCc("12342345552"), tickets, flightroutes[2], flightroutes[0]));
 
         passengers = getPassengers(3,4);
         tickets = getTickets(passengers, flightroutes[1]);
+        System.out.println("Passengar size: " + passengers.size());
+        System.out.println("Ticket size: " + tickets.size());
         bookings.add(new Booking(getPnr(3), 1500.00, getFfnCc("3654462323"), tickets, flightroutes[1], flightroutes[2]));
 
         passengers = getPassengers(0,6);
         tickets = getTickets(passengers, flightroutes[0]);
+        System.out.println("Passengar size: " + passengers.size());
+        System.out.println("Ticket size: " + tickets.size());
         bookings.add(new Booking(getPnr(4), 800.00, getFfnCc("34569696312"), tickets, flightroutes[0], flightroutes[1]));
 
         return bookings;
